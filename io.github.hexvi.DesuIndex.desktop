@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=DesuIndex
+GenericName=Anime Expression Sorter
+Comment=Sort anime images by facial expression using AI
+Exec=desuindex
+Icon=io.github.hexvi.DesuIndex
+Type=Application
+Categories=Graphics;
+Keywords=anime;sort;image;expression;ai;
+StartupNotify=true

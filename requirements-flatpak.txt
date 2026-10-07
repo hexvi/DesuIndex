@@ -1,0 +1,9 @@
+# Python packages to bundle in the Flatpak.
+# PyGObject and pycairo are excluded — they come from org.gnome.Platform.
+#
+# After editing, regenerate the pinned wheel list with:
+#   ./generate-python-deps.py
+numpy>=1.24.0
+Pillow>=10.0.0
+onnxruntime>=1.17.0
+huggingface-hub>=0.20.0

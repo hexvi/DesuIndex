@@ -1,0 +1,55 @@
+{
+    "app-id": "io.github.hexvi.DesuIndex",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "50",
+    "sdk": "org.gnome.Sdk",
+    "command": "desuindex",
+
+    "finish-args": [
+        "--share=network",
+        "--share=ipc",
+        "--socket=wayland",
+        "--socket=fallback-x11",
+        "--filesystem=xdg-pictures",
+        "--device=dri"
+    ],
+
+    "modules": [
+        "python3-requirements.json",
+        {
+            "name": "desuindex",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -Dm644 -t /app/share/io.github.hexvi.DesuIndex src/*.py",
+                "install -Dm755 desuindex.sh            /app/bin/desuindex",
+                "install -Dm644 io.github.hexvi.DesuIndex.desktop      /app/share/applications/io.github.hexvi.DesuIndex.desktop",
+                "install -Dm644 io.github.hexvi.DesuIndex.metainfo.xml /app/share/metainfo/io.github.hexvi.DesuIndex.metainfo.xml",
+                "install -Dm644 io.github.hexvi.DesuIndex.png          /app/share/icons/hicolor/512x512/apps/io.github.hexvi.DesuIndex.png"
+            ],
+            "sources": [
+                {
+                    "type": "dir",
+                    "path": "src",
+                    "dest": "src",
+                    "skip": ["__pycache__"]
+                },
+                {
+                    "type": "file",
+                    "path": "desuindex.sh"
+                },
+                {
+                    "type": "file",
+                    "path": "io.github.hexvi.DesuIndex.desktop"
+                },
+                {
+                    "type": "file",
+                    "path": "io.github.hexvi.DesuIndex.metainfo.xml"
+                },
+                {
+                    "type": "file",
+                    "path": "io.github.hexvi.DesuIndex.png"
+                }
+            ]
+        }
+    ]
+}

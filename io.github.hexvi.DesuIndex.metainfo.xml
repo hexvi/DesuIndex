@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.hexvi.DesuIndex</id>
+  <name>DesuIndex</name>
+  <summary>Sort anime images by facial expression using AI</summary>
+  <description>
+    <p>
+      DesuIndex classifies anime images by detected
+      facial expressions — happy, sad, angry, surprised, neutral, and more —
+      using an ONNX-based AI model. Browse thumbnails, reassign misclassified
+      images, then copy, move or symlink them into one folder per expression, in your Pictures folder or anywhere you choose.
+    </p>
+  </description>
+  <launchable type="desktop-id">io.github.hexvi.DesuIndex.desktop</launchable>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <url type="homepage">https://github.com/hexvi/DesuIndex</url>
+  <releases>
+    <release version="1.1.0" date="2026-09-30">
+      <description>
+        <ul>
+          <li>Uses the more accurate WD EVA02-Large Tagger v3 model</li>
+          <li>Better at telling happy, smug and embarrassed faces apart</li>
+          <li>New "laughing" and "thinking" categories</li>
+          <li>Images without a clear expression go into an "other" folder, which can also be picked by hand</li>
+          <li>Processing a folder can be stopped partway, keeping the images already done</li>
+          <li>Pick which expressions to sort into, and every image goes to the closest one</li>
+          <li>GIFs are sorted too, judged across the whole animation</li>
+          <li>Images can be sorted as links, leaving the originals where they are</li>
+          <li>Can scan the folders inside the one you open, too</li>
+          <li>Can remember sorted images, so opening a folder again skips them</li>
+          <li>Transparent images and rotated photos are tagged correctly</li>
+          <li>Only has access to the Pictures folder by default</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.0.0" date="2026-06-06"/>
+  </releases>
+  <content_rating type="oars-1.1"/>
+</component>
