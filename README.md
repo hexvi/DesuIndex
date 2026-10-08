@@ -2,6 +2,8 @@
 
 DesuIndex is a simple enough Flatpak program for easily organizing your anime reaction images written to look as sleek and cohesive as possible under GNOME for GNU/Linux.
 
+![DesuIndex main window](screenshots/scanned.png)
+
 ## How to use
 
 All you have to do is just open the folder you want to sort and it'll tag whatever is put in. The images are tagged by most likely probability and when certain expressions are unchecked the images will then be sorted to whichever is most probable in the list. The images will be copied, moved or symlinked to `~/Pictures/Sorted/` by default once the user presses "Sort Images" but can be changed to wherever. Unchecking "Other" will stop placing images into that folder and instead try to associate it with whatever other reactions were picked. Everything else should be straightforward to navigate.

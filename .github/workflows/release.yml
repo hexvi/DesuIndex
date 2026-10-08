@@ -1,0 +1,62 @@
+# Build the Flatpak bundle for each architecture and attach it to a GitHub
+# Release whenever a version tag is pushed:
+#   git tag v1.1.0 && git push origin v1.1.0
+# The tag must match the newest <release> in the metainfo file.
+
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+jobs:
+  flatpak:
+    name: Flatpak (${{ matrix.arch }})
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      matrix:
+        include:
+          - arch: x86_64
+            runner: ubuntu-24.04
+          - arch: aarch64
+            runner: ubuntu-24.04-arm
+    container:
+      # Keep in sync with runtime-version in io.github.hexvi.DesuIndex.json
+      image: ghcr.io/flathub-infra/flatpak-github-actions:gnome-50
+      options: --privileged
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Check tag matches metainfo version
+        id: version
+        run: |
+          version=$(sed -n 's/.*<release version="\([^"]*\)".*/\1/p' io.github.hexvi.DesuIndex.metainfo.xml | head -n1)
+          if [ "v$version" != "$GITHUB_REF_NAME" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match metainfo version $version"
+            exit 1
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+      - uses: flatpak/flatpak-github-actions/flatpak-builder@v6
+        with:
+          manifest-path: io.github.hexvi.DesuIndex.json
+          bundle: desuindex-${{ steps.version.outputs.version }}-${{ matrix.arch }}.flatpak
+          arch: ${{ matrix.arch }}
+          cache-key: flatpak-builder-${{ matrix.arch }}-${{ github.sha }}
+
+  release:
+    needs: flatpak
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          path: dist
+          merge-multiple: true
+
+      - uses: softprops/action-gh-release@v3
+        with:
+          files: dist/*.flatpak
+          fail_on_unmatched_files: true
+          generate_release_notes: true
