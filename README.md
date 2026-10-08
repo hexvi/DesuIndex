@@ -6,7 +6,15 @@ DesuIndex is a simple enough Flatpak program for easily organizing your anime re
 
 ## How to use
 
-All you have to do is just open the folder you want to sort and it'll tag whatever is put in. The images are tagged by most likely probability and when certain expressions are unchecked the images will then be sorted to whichever is most probable in the list. The images will be copied, moved or symlinked to `~/Pictures/Sorted/` by default once the user presses "Sort Images" but can be changed to wherever. Unchecking "Other" will stop placing images into that folder and instead try to associate it with whatever other reactions were picked. Everything else should be straightforward to navigate.
+All you have to do is just open the folder you want to sort and it'll tag whatever is put in. The images are tagged by most likely probability and when certain expressions are unchecked the images will then be sorted to whichever is most probable in the list. 
+
+![Expressions selection](screenshots/expressions_selection.png)
+
+The images will be copied, moved or symlinked to `~/Pictures/Sorted/` by default once the user presses "Sort Images" but can be changed to wherever. 
+
+![Link confirmation](screenshots/link.png)
+
+![Folder sorted](screenshots/folder_sorted.png)
 
 ## Permissions
 
@@ -19,6 +27,8 @@ By default only has access to `~/Pictures` but you can open any folder through t
 Pretty solid, it's good enough to generally sort what you need and fast enough in the GUI to move around the errors it makes. I'm thinking about trying out different models in the future to be more lightweight and faster. At the moment scanning a thousand images takes about thirty minutes on an AMD Ryzen 7 7700 CPU.
 
 ## Other things to know
+
+Unchecking "Other" will stop placing images into that folder and instead try to associate it with whatever other reactions were picked.
 
 Preferences menu has the option to search subfolders along with remembering sorted images to prevent redundant scans on the next scan. Both of these options are disabled by default.
 
