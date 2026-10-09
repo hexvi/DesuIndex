@@ -36,7 +36,12 @@ If "Remember Sorted Images" for files is turned off re-scanning a directory and 
 
 ## Install
 
-DesuIndex isn't currently on any app stores (hopefully in the future). The current install process is:
+DesuIndex isn't currently on any app stores (hopefully in the future) but you can download the Flatpak from the [latest release](https://github.com/hexvi/DesuIndex/releases/latest), then:
+
+flatpak install --user DesuIndex.flatpak
+flatpak run io.github.hexvi.DesuIndex 
+
+You can also build it yourself with:
 
 ```bash
 sudo dnf install flatpak-builder     # Ubuntu/Debian: sudo apt install flatpak flatpak-builder
